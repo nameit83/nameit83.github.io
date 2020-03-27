@@ -71,6 +71,12 @@
     font-weight: bolder;
     
 }
+tr .fixed{
+  position: fixed;
+}
+thead{
+  display:block;
+}
 
 td {
     border: 1px solid black;
@@ -97,18 +103,22 @@ td {
     <table>
       <tr>
         <td><div id ="table-wrapper" style ="height: 850px; width: 850px; overflow:auto; display:flex;">
-          <table id ='table'>
-            <tr>
-              <td class = "th">ID</td>
-              <td class = "th">Country</td>
-              <td class = "th">Confirmed Cases</td>
-              <td class ="th">New Cases Today</td>
-              <td class = "th">Total Deaths</td>
-              <td class ="th">Deaths today</td>
-              <td class = "th">Recovered Cases</td>
-              <td class ="th">Active Cases</td>
-              <td class ="th">Critical Cases</td>
-              <td class ="th">Cases per one million</td>
+          <table id ="table">
+            <thead id ="fixed-position">
+              <tr id ="fixed">
+              <th class = "th">ID</th>
+              <th class = "th">Country</th>
+              <th class = "th">Confirmed Cases</th>
+              <th class ="th">New Cases Today</th>
+              <th class = "th">Total Deaths</th>
+              <th class ="th">Deaths today</th>
+              <th class = "th">Recovered Cases</th>
+              <th class ="th">Active Cases</th>
+              <th class ="th">Critical Cases</th>
+              <th class ="th">Cases per one million</th>
+            </tr>
+              </thead>
+              <tbody></tbody>
           </table>
         </div></td>
         <td> <div id ="mapview" style="width:1000px;height:850px"></div></td> 
@@ -183,7 +193,7 @@ td {
       var url = "https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/Coronavirus_2019_nCoV_Cases/FeatureServer/2/query?where=1%3D1&outFields=Country_Region,Confirmed,Deaths,Recovered&returnGeometry=false&orderByFields=Confirmed%20DESC&outSR=4326&f=json"; 
       var options = {responseType:"json"}; 
       var trialurl = "https://corona.lmao.ninja/countries";
-      var no = 1
+      var no = 1;
       var jsonurl = "https://opendata.arcgis.com/datasets/bbb2e4f589ba40d692fab712ae37b9ac_2.geojson";
 
       const template ={
@@ -316,7 +326,7 @@ td {
     
 </script>
 
-   </footer>
+  </footer>
 
  
 
