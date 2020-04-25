@@ -82,7 +82,12 @@ td {
     border: 1px solid black;
     padding: 3px 10px;
 }
-
+.totalinfo {
+  color: white;
+      display: inline-table;
+      border: 2px solid black;
+      font-family: 'Open Sans', sans-serif;
+}
 
   </style>
 </head>
@@ -99,10 +104,11 @@ td {
       <td id="ttd"></td>
       <td id ="tac"></td>
       <td id ="tcc"></td>
+      <td id ="ttt"></td>
     </table>
     <table>
       <tr>
-        <td><div id ="table-wrapper" style ="height: 850px; width: 850px; overflow:auto; display:flex;">
+        <td><div id ="table-wrapper" style ="height: 850px; width: 1000px; overflow:auto; display:flex;">
           <table id ="table">
             <thead id ="fixed-position">
               <tr id ="fixed">
@@ -116,12 +122,15 @@ td {
               <th class ="th">Active Cases</th>
               <th class ="th">Critical Cases</th>
               <th class ="th">Cases per one million</th>
+              <th class ="th">Deaths per one million</th>
+              <th class ="th">Tests Conducted</th>
+              <th class ="th">Tests per one million</th>
             </tr>
               </thead>
               <tbody></tbody>
           </table>
         </div></td>
-        <td> <div id ="mapview" style="width:1000px;height:850px"></div></td> 
+        <td> <div id ="mapview" style="width:850px;height:850px"></div></td> 
         <td>
           
         </td>
@@ -175,7 +184,7 @@ td {
       
    <footer>
       
-     <script>
+    <script>
     var strtmap;;
     var mapview;
     var totalconfirm = 0;
@@ -185,6 +194,8 @@ td {
     var totalTodayDeaths =0;
     var totalActiveCases =0;
     var totalCritCases =0;
+    var totalTests=0;
+    var worldwideTests=0;
     
     require(["esri/Map","esri/views/MapView","esri/request","esri/layers/GeoJSONLayer","esri/widgets/BasemapToggle"],
     function(Map,MapView,esriRequest,GeoJSONLayer,BasemapToggle)
@@ -192,7 +203,7 @@ td {
       
       var url = "https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/Coronavirus_2019_nCoV_Cases/FeatureServer/2/query?where=1%3D1&outFields=Country_Region,Confirmed,Deaths,Recovered&returnGeometry=false&orderByFields=Confirmed%20DESC&outSR=4326&f=json"; 
       var options = {responseType:"json"}; 
-      var trialurl = "https://corona.lmao.ninja/countries";
+      var trialurl = "https://corona.lmao.ninja/v2/countries?sort=cases";
       var no = 1;
       var jsonurl = "https://opendata.arcgis.com/datasets/bbb2e4f589ba40d692fab712ae37b9ac_2.geojson";
 
@@ -255,7 +266,7 @@ td {
       
         var table = document.getElementById("table"),
         newRow = table.insertRow(table.length),
-        tid = newRow.insertCell(0);
+        tid = newRow.insertCell(0),
         country = newRow.insertCell(1),
         confirmed = newRow.insertCell(2),
         todayCases = newRow.insertCell(3),
@@ -264,7 +275,10 @@ td {
         recovered = newRow.insertCell(6),
         activeCases = newRow.insertCell(7),
         criticalCases = newRow.insertCell(8),
-        permilCases = newRow.insertCell(9);
+        permilCases = newRow.insertCell(9),
+        permilDeaths = newRow.insertCell(10),
+        testCond = newRow.insertCell(11),
+        permilTests =newRow.insertCell(12);
 
         tid.innerHTML = no;
         no++;
@@ -292,6 +306,14 @@ td {
         totalCritCases +=data.critical;
 
         permilCases.innerHTML=data.casesPerOneMillion;
+
+        permilDeaths.innerHTML = data.deathsPerOneMillion;
+
+        testCond.innerHTML = data.tests;
+        worldwideTests += data.tests;
+
+        permilTests.innerHTML=data.testsPerOneMillion;
+
         
 
         $("#tc").html("<tr>"+"<td>Total Infected</td>"+"</tr>"+"<tr>"+"<td>"+totalconfirm+"</td>"+"</tr>");
@@ -301,6 +323,7 @@ td {
         $("#ttd").html("<tr>"+"<td>Total Deaths Today</td>"+"</tr>"+"<tr>"+"<td>"+totalTodayDeaths+"</td>"+"</tr>");
         $("#tac").html("<tr>"+"<td>Total Active Cases</td>"+"</tr>"+"<tr>"+"<td>"+totalActiveCases+"</td>"+"</tr>");
         $("#tcc").html("<tr>"+"<td>Total Critical Cases</td>"+"</tr>"+"<tr>"+"<td>"+totalCritCases+"</td>"+"</tr>");
+        $("#ttt").html("<tr>"+"<td>Total Tests Conducted</td>"+"</tr>"+"<tr>"+"<td>"+worldwideTests+"</td>"+"</tr>");
       }; 
       
 
@@ -311,12 +334,12 @@ td {
         for (let i=0;i<geoJson.length;i++){
           addTableRow(geoJson[i]);
         };
+        
         // alert(geoJson.objectIdFieldName);
         // for (let i=0; i <geoJson.features.length; i++){
         //   addTableRow(geoJson.features[i].attributes);
 
       // };
-      console.log(totalconfirm);
       });
 
 
