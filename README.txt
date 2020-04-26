@@ -4,6 +4,8 @@ and the database is updated hourly. The data for the map is taken from an ESRI b
 The API for the Map is having problems on Firefox based browsers so it is recommended to use a chromium or chrome based browser for
 best results.
 
+You can also access the website through https://nameit83.github.io
+
 
 Data Sources:
 https://corona.lmao.ninja/v2/countries
