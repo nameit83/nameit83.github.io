@@ -13,7 +13,7 @@
   
    <style>
      body{
-       background-color:#292727;
+       background-color:#344152;
        text-align:center;
        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
        color:white;
@@ -24,6 +24,7 @@
      }
      h5{
        font-size: 20px;
+       color:goldenrod;
      }
      h2{
        color:rgb(0, 0, 0);
@@ -33,19 +34,26 @@
        background-image: url(banner-coronavirus.png);
       
      }
-     
+     .ways{
+       color:slateblue;
+     }
+     .myths{
+       color:lightseagreen;
+     }
      #wholink{
-       color:red;
+       color:peru;
      }
      a{
-       color:yellow;
+       color:fuchsia;
        padding-left: 15px;
      }
      #info-text{
        margin: 25px 50px;
+       color:greenyellow;
      }
      #footnote{
        font-size:14px;
+       color:rgb(70,130,180);
      }
      .mapview{
        left:0;
@@ -81,14 +89,39 @@ thead{
 td {
     border: 1px solid black;
     padding: 3px 10px;
+    color:honeydew;
 }
 .totalinfo {
   color: white;
       display: inline-table;
       border: 2px solid black;
       font-family: 'Open Sans', sans-serif;
+      font-weight: bolder;
 }
-
+.rec{
+  color:green;
+}
+.inf{
+  color:red;
+}
+.death{
+  color:salmon;
+}
+.new{
+  color:skyblue;
+}
+.tottest{
+  color:lightgreen;
+}
+.totdeath{
+  color:sandybrown;
+}
+.totact{
+  color:cornflowerblue;
+}
+.totcrit{
+  color:wheat;
+}
   </style>
 </head>
 
@@ -142,7 +175,7 @@ td {
       Coronaviruses are zoonotic, meaning they are transmitted between animals and people.  Detailed investigations found that SARS-CoV was transmitted from civet cats to humans and MERS-CoV from dromedary camels to humans. Several known coronaviruses are circulating in animals that have not yet infected humans. 
       Common signs of infection include respiratory symptoms, fever, cough, shortness of breath and breathing difficulties. In more severe cases, infection can cause pneumonia, severe acute respiratory syndrome, kidney failure and even death. 
       Standard recommendations to prevent infection spread include regular hand washing, covering mouth and nose when coughing and sneezing, thoroughly cooking meat and eggs. Avoid close contact with anyone showing symptoms of respiratory illness such as coughing and sneezing.
-      <h3>WAYS TO STAY SAFE</h3>
+      <h3 class ="ways">WAYS TO STAY SAFE</h3>
           <h5>Wash your hands frequently</h5>
           <h5>Maintain social distancing</h5>
           <h5>Avoid touching eyes, nose and mouth</h5>
@@ -150,7 +183,7 @@ td {
           <h5>If you have fever, cough and difficulty breathing, seek medical care early</h5>
           <h5>Stay informed and follow advice given by your healthcare provider</h5>
       <br><br>
-      <h3>MYTHS ABOUT THE VIRUS</h3>
+      <h3 class ="myths">MYTHS ABOUT THE VIRUS</h3>
           <h5>Cold weather and snow CANNOT kill the new coronavirus</h5>
           <h5>Taking a hot bath does not prevent the new coronavirus disease</h5>
           <h5>The new coronavirus CANNOT be transmitted through mosquito bites</h5>
@@ -317,14 +350,14 @@ td {
 
         
 
-        $("#tc").html("<tr>"+"<td>Total Infected</td>"+"</tr>"+"<tr>"+"<td>"+totalconfirm+"</td>"+"</tr>");
-        $("#tr").html("<tr>"+"<td>Total Deaths</td>"+"</tr>"+"<tr>"+"<td>"+totaldeath+"</td>"+"</tr>");
-        $("#td").html("<tr>"+"<td>Total Recovered</td>"+"</tr>"+"<tr>"+"<td>"+totalrecovered+"</td>"+"</tr>");
-        $("#ttc").html("<tr>"+"<td>Total New Cases</td>"+"</tr>"+"<tr>"+"<td>"+totalTodayCases+"</td>"+"</tr>");
-        $("#ttd").html("<tr>"+"<td>Total Deaths Today</td>"+"</tr>"+"<tr>"+"<td>"+totalTodayDeaths+"</td>"+"</tr>");
-        $("#tac").html("<tr>"+"<td>Total Active Cases</td>"+"</tr>"+"<tr>"+"<td>"+totalActiveCases+"</td>"+"</tr>");
-        $("#tcc").html("<tr>"+"<td>Total Critical Cases</td>"+"</tr>"+"<tr>"+"<td>"+totalCritCases+"</td>"+"</tr>");
-        $("#ttt").html("<tr>"+"<td>Total Tests Conducted</td>"+"</tr>"+"<tr>"+"<td>"+worldwideTests+"</td>"+"</tr>");
+        $("#tc").html("<tr>"+"<td class='inf'>Total Infected</td>"+"</tr>"+"<tr>"+"<td class='inf'>"+totalconfirm+"</td>"+"</tr>");
+        $("#tr").html("<tr>"+"<td class='death'>Total Deaths</td>"+"</tr>"+"<tr>"+"<td class='death'>"+totaldeath+"</td>"+"</tr>");
+        $("#td").html("<tr>"+"<td class ='rec'>Total Recovered</td>"+"</tr>"+"<tr>"+"<td class='rec'>"+totalrecovered+"</td>"+"</tr>");
+        $("#ttc").html("<tr>"+"<td class ='new'>Total New Cases</td>"+"</tr>"+"<tr>"+"<td class ='new'>"+totalTodayCases+"</td>"+"</tr>");
+        $("#ttd").html("<tr>"+"<td class ='totdeath'>Total Deaths Today</td>"+"</tr>"+"<tr>"+"<td class ='totdeath'>"+totalTodayDeaths+"</td>"+"</tr>");
+        $("#tac").html("<tr>"+"<td class ='totact'>Total Active Cases</td>"+"</tr>"+"<tr>"+"<td class ='totact'>"+totalActiveCases+"</td>"+"</tr>");
+        $("#tcc").html("<tr>"+"<td class ='totcrit'>Total Critical Cases</td>"+"</tr>"+"<tr>"+"<td class ='totcrit'>"+totalCritCases+"</td>"+"</tr>");
+        $("#ttt").html("<tr>"+"<td class ='tottest'>Total Tests Conducted</td>"+"</tr>"+"<tr>"+"<td class='tottest'>"+worldwideTests+"</td>"+"</tr>");
       }; 
       
 
